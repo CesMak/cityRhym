@@ -1,0 +1,6 @@
+.env
+__pycache__/
+address_book.db
+*.db
+addresses
+poem
