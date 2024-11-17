@@ -77,7 +77,19 @@ def check_if_poem_exists(conn, postcode):
         return True
     else:
         return False
-    
+
+def get_poem_by_postcode(conn, postcode):
+    """Retrieves the poem for the given postcode."""
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT poem_text FROM poem WHERE postcode = ?", (postcode,))
+    result = cursor.fetchone()
+
+    if result:
+        return result[0]  # Return the poem text
+    else:
+        return None  # Indicate no poem found
+
 def insert_poem(conn, postcode, poem):
     """Inserts a new poem into the database"""
     cursor = conn.cursor()

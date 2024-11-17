@@ -14,11 +14,23 @@ def main():
 
 
     # Button to trigger poem generation
-    if st.button("Generate Poem"):
+    if st.button("Generate poem"):
         address = f"{first_name}, {last_name}, {postcode}, {street}, {house_number}, {city} "
         response = requests.post("http://localhost:5000/generate_poem", json={"address": address})
         poem = response.json()["poem"]
-        st.write(poem)
+        print("Frontend:::")
+        print(poem)
+        poem = poem.replace("\n","<br>")
+        st.write(poem, unsafe_allow_html=True)
+
+    # if st.button("Save Poem and address"):
+    #     print("huhu")
+    
+    # if st.button("Delete poem"):
+    #     print("hihi")
+
+    # if st.button("Delete address"):
+    #     print("jaaj")
 
 if __name__ == "__main__":
     main()
