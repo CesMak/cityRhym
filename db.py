@@ -29,7 +29,7 @@ def create_connection(database_name):
                 last_name TEXT,
                 street TEXT,
                 house_number INTEGER,
-                postcode INTEGER,
+                zipcode INTEGER,
                 city TEXT
                 )
             ''')
@@ -37,22 +37,22 @@ def create_connection(database_name):
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS poem (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    postcode INTEGER,
+                    zipcode INTEGER,
                     poem TEXT
                 )
             ''')
     conn.commit()
     return conn
 
-def insert_address(conn, first_name, last_name, street, house_number, postcode, city):
+def insert_address(conn, first_name, last_name, street, house_number, zipcode, city):
     """Inserts a new address into the database, checking for duplicates."""
     cursor = conn.cursor()
 
     # Check if the address already exists
     cursor.execute('''
         SELECT * FROM addresses
-        WHERE first_name = ? AND last_name = ? AND street = ? AND house_number = ? AND postcode = ? AND city = ?
-    ''', (first_name, last_name, street, house_number, postcode, city))
+        WHERE first_name = ? AND last_name = ? AND street = ? AND house_number = ? AND zipcode = ? AND city = ?
+    ''', (first_name, last_name, street, house_number, zipcode, city))
 
     existing_address = cursor.fetchone()
 
@@ -60,17 +60,17 @@ def insert_address(conn, first_name, last_name, street, house_number, postcode, 
         print("Address already exists.")
     else:
         cursor.execute('''
-            INSERT INTO addresses (first_name, last_name, street, house_number, postcode, city)
+            INSERT INTO addresses (first_name, last_name, street, house_number, zipcode, city)
             VALUES (?, ?, ?, ?, ?, ?)
-        ''', (first_name, last_name, street, house_number, postcode, city))
+        ''', (first_name, last_name, street, house_number, zipcode, city))
         conn.commit()
         print("Address inserted successfully.")
 
-def check_if_poem_exists(conn, postcode):
-    """Checks if a poem exists for the given postcode."""
+def check_if_poem_exists(conn, zipcode):
+    """Checks if a poem exists for the given zipcode."""
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM poem WHERE postcode = ?", (postcode,))
+    cursor.execute("SELECT * FROM poem WHERE zipcode = ?", (zipcode,))
     existing_poem = cursor.fetchone()
 
     if existing_poem:
@@ -78,25 +78,27 @@ def check_if_poem_exists(conn, postcode):
     else:
         return False
 
-def get_poem_by_postcode(conn, postcode):
-    """Retrieves the poem for the given postcode."""
+def get_poem_by_zipcode(conn, zipcode):
+    """Retrieves the poem for the given zipcode."""
     cursor = conn.cursor()
 
-    cursor.execute("SELECT poem_text FROM poem WHERE postcode = ?", (postcode,))
-    result = cursor.fetchone()
+    try:
+        cursor.execute("SELECT poem_text FROM poem WHERE zipcode = ?", (zipcode,))
+        result = cursor.fetchone()
+        if result:
+            return result[0]  # Return the poem text
+        else:
+            return None  # Indicate no poem found
+    except Exception as e:
+        return None
 
-    if result:
-        return result[0]  # Return the poem text
-    else:
-        return None  # Indicate no poem found
-
-def insert_poem(conn, postcode, poem):
+def insert_poem(conn, zipcode, poem):
     """Inserts a new poem into the database"""
     cursor = conn.cursor()
     cursor.execute('''
-        INSERT INTO poem (postcode, poem)
+        INSERT INTO poem (zipcode, poem)
         VALUES (?, ?)
-    ''', (postcode, poem))
+    ''', (zipcode, poem))
     conn.commit()
 
 def print_table_entries(conn, db_name):
