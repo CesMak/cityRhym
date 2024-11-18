@@ -1,54 +1,68 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="Yc_0CErd1OZx21VJhCSn">
-    <mxGraphModel dx="1364" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1137" dy="703" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-4" value="generatePoem&lt;br&gt;Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZRrURbAWNwPeo_-CZhzD-1" target="ZRrURbAWNwPeo_-CZhzD-2">
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-4" value="send Requests&lt;div&gt;&lt;font color=&quot;#99004d&quot;&gt;1) generate_poem&lt;/font&gt;&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ZRrURbAWNwPeo_-CZhzD-1" target="ZRrURbAWNwPeo_-CZhzD-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-1" value="Front End (app.py)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Front End (app.py)&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;UI stuff (buttons etc.)&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Display errors&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Library:&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;streamlit&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="130" y="220" width="220" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-2" value="Backend (backend.py)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-2" value="&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Back End (backend.py)&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Routes handling&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Connection to database&#39;s&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Connection to PoemChecker&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Connection to LLM&lt;/li&gt;&lt;/ul&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Library:&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;flask&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="460" y="220" width="250" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-3" value="Database addresses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="880" y="230" width="180" height="60" as="geometry" />
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-3" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;Database&lt;/b&gt;&lt;/font&gt; &lt;b&gt;addresses&lt;/b&gt;&lt;br&gt;sqlite3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="880" y="230" width="220" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-5" value="store if not already&lt;div&gt;&amp;nbsp;available&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="ZRrURbAWNwPeo_-CZhzD-2" target="ZRrURbAWNwPeo_-CZhzD-3">
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-5" value="&lt;font color=&quot;#99004d&quot;&gt;2) store_address if not avaiblabe&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="ZRrURbAWNwPeo_-CZhzD-2" target="ZRrURbAWNwPeo_-CZhzD-3" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="360" y="340" as="sourcePoint" />
             <mxPoint x="490" y="350" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-6" value="Database poems" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="880" y="300" width="180" height="60" as="geometry" />
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-6" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;Database&lt;/b&gt;&lt;/font&gt; &lt;b&gt;poems&lt;/b&gt;&lt;div&gt;sqlite3&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="880" y="300" width="220" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-8" value="check if Poem available" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ZRrURbAWNwPeo_-CZhzD-2" target="ZRrURbAWNwPeo_-CZhzD-6">
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-8" value="&lt;font color=&quot;#99004d&quot;&gt;3) check if poem available&lt;br&gt;for zipcode&lt;/font&gt;" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="ZRrURbAWNwPeo_-CZhzD-2" target="ZRrURbAWNwPeo_-CZhzD-6" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="520" y="550" as="sourcePoint" />
             <mxPoint x="570" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-9" value="LLM generate Poem&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="880" y="380" width="180" height="70" as="geometry" />
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-9" value="&lt;b style=&quot;font-size: 15px;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;LLM&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;ul style=&quot;&quot;&gt;&lt;li style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;lemonfox API&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;model=Llama 3.1 70B (META)&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;temperature=0.1&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;use a reprompt&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="880" y="370" width="220" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-10" value="generate Poem&lt;br&gt;if not available" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="ZRrURbAWNwPeo_-CZhzD-2" target="ZRrURbAWNwPeo_-CZhzD-9">
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-10" value="&lt;font color=&quot;#99004d&quot;&gt;4) generate Poem&lt;br&gt;if not availabl&lt;/font&gt;e" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="ZRrURbAWNwPeo_-CZhzD-2" target="ZRrURbAWNwPeo_-CZhzD-9" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="720" y="350" as="sourcePoint" />
             <mxPoint x="890" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-11" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="ZRrURbAWNwPeo_-CZhzD-1" target="ZRrURbAWNwPeo_-CZhzD-2">
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-11" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="ZRrURbAWNwPeo_-CZhzD-1" target="ZRrURbAWNwPeo_-CZhzD-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="690" y="550" as="sourcePoint" />
             <mxPoint x="740" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZRrURbAWNwPeo_-CZhzD-12" value="display the Poem&amp;nbsp;&lt;br&gt;or an Error" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ZRrURbAWNwPeo_-CZhzD-11">
+        <mxCell id="ZRrURbAWNwPeo_-CZhzD-12" value="&lt;font color=&quot;#99004d&quot;&gt;6) display the Poem&amp;nbsp;&lt;br&gt;or an Error&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="ZRrURbAWNwPeo_-CZhzD-11" vertex="1" connectable="0">
           <mxGeometry x="-0.557" y="-3" relative="1" as="geometry">
             <mxPoint x="26" y="9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LStt5azsF0GuF0Vmc3Gt-1" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;Verify cross ryhme&lt;/b&gt;&lt;/span&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Library: NLTK&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="880" y="480" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LStt5azsF0GuF0Vmc3Gt-3" value="&lt;font color=&quot;#99004d&quot;&gt;5) only for EN&lt;br&gt;verify rhyme&lt;/font&gt;" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.006;entryY=0.386;entryDx=0;entryDy=0;exitX=0.996;exitY=0.938;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="ZRrURbAWNwPeo_-CZhzD-2" target="LStt5azsF0GuF0Vmc3Gt-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="470" as="sourcePoint" />
+            <mxPoint x="880" y="485" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LStt5azsF0GuF0Vmc3Gt-4" value="&lt;font color=&quot;#99004d&quot;&gt;Example case&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="389.9954145869075" y="340.00032062246567" as="geometry">
+            <mxPoint x="-213" y="146" as="offset" />
           </mxGeometry>
         </mxCell>
       </root>

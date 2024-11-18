@@ -3,25 +3,35 @@
 
 # Task definition
 Create a state-of-the-art web service based on standard libraries. It is an address service with built-in lyric functionality. Addresses can be created and
-query. Based on the address, a funny poem about their place of residence and local eating and drinking habits is automatically generated. If a poem has already been created for the place of residence by another, this will be delivered, otherwise a new one will be created. For each location
-only one poem exists. The addresses entered in this way (incl. poem) can be created, queried, changed and deleted.
+queried. Based on the address, a funny poem about their place of residence and local eating and drinking habits is automatically generated. If a poem has already been created for the place of residence by another, this will be delivered, otherwise a new one will be created. For each location
+only one poem exists. The addresses entered in this way (incl. poem) can be created, queried, changed and deleted. The poem should be in cross rhyme (ABAB).
 
 # Architecture
-* ![architecture](doc/overview.png)
-* using Flask or Django or Angular would be a good chocice however its way to big
-* thus I use the more familiar streamlit
-* I also use as usual a python3 virtual environment
-* requirements.txt is attached
+![alt text](doc/image.png)
 
 # Prompting
-* Kannst du mir ein lustiges Gedicht im Kreuzreim über die Stadt Berlin und die lokalen Essens- und Trinkgewohnheiten erzeugen?
-* Create a funny poem about the city of Berlin and the local eating and drinking habits? The poem should have only 4 verses and a cross rhym.
+* see backend.py:
+```
+PROMPT_EN     = "Create a funny poem with a cross rhyme about the eating and drinking habits in"
+REPORMPT_EN   = "This was a couplet rhyme. Please rearrange the words such that the middle words rhyme! Only return the poem!"
 
-# How to start:
+PROMPT_DE     = "Erstelle ein lustiges Gedicht im Kreuzreim über die Essens und Triinkgewohnheiten in"
+REPROMPT_DE   = "Das war ein Paarreim (AABB). Bitte gestalte den Reim zu einem Kreuzreim (ABAB) um. Gib nur den Reim  selbst zurück!"
+```
 
-# API considerations
-* https://www.lemonfox.ai/billing?welcome
-* or download ist locally
+# Try it out!
+* Check and insert your LLM API credentials in api.py
+* setup a virtual python environment
+* install requirements.txt
+* you may use these bash aliases:
+```bash
+alias cd_cr='source /home/markus/Desktop/cityRhyme/.env/bin/activate'
+alias start_app='source /home/markus/Desktop/cityRhyme/.env/bin/activate && cd /home/markus/Desktop/cityRhyme/ && streamlit run ./app.py'
+alias start_server='source /home/markus/Desktop/cityRhyme/.env/bin/activate && cd /home/markus/Desktop/cityRhyme/ && python3 backend.py'
+```
+* in one terminal execute start_app
+* in another one execute start_server
+* enter your address and click generate_poem!
 
 # Examples Gemini - de
 * Berlin
@@ -77,6 +87,7 @@ A place where the fun, and the memories rise.
 
 # Timeline
 * Sa 16 Nov 8:30 - 10:30 for architecture and db stuff
-* So use LLM for generating the poems
+* So 1h use LLM for generating the poems
+* Mo fix some db bugs
 
 

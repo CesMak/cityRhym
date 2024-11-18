@@ -4,7 +4,15 @@ import os
 
 def main():
     DEBUG_MESSAGE = "System messages are displayed here"
-    st.title("Poem Generator")
+
+    if 'language' not in st.session_state:
+        st.session_state.language = 'en'
+    st.session_state.language = st.checkbox('Deutsch')
+    if st.session_state.language:
+        st.title('Reim Automat')
+    else:
+        st.title('Poem Generator')
+
 
     st.header("Create or edit an address or poem")
     col1, col2 = st.columns(2)
@@ -27,7 +35,7 @@ def main():
         if st.button("Generate poem"):
             DEBUG_MESSAGE = "Try to generate a poem\n"
             address  = f"{first_name}, {last_name}, {zipcode}, {street}, {house_number}, {city} "
-            response = requests.post("http://localhost:5000/generate_poem", json={"address": address})
+            response = requests.post("http://localhost:5000/generate_poem", json={"address": address, "language_de": st.session_state.language})
             poem     = ""
             if "poem" in response.json():
                 poem = response.json()["poem"]
@@ -43,6 +51,7 @@ def main():
         if st.button("Save changes"):
             print("TODO")
 
+    ## Delete
     st.header("Delete an address")
     col11, col222, col333 = st.columns(3)
     with col11:
@@ -50,25 +59,52 @@ def main():
     with col222:
         last_name_to_delete = st.text_input("Last Name", key="last_name_to_delete")
     with col333:
-        if st.button("Delete Address"):
-            print("delete address clicked!")
-
+        if st.button("Delete Address", key="delete_address"):
+            DEBUG_MESSAGE = "Try to delete"+first_name+","+last_name+" from the database:"+"\n"
+            response = requests.post("http://localhost:5000/delete_address", json={"first_name": first_name_to_delete, "last_name":last_name_to_delete})
+            if "debug_msg" in response.json():
+                DEBUG_MESSAGE += response.json()["debug_msg"]
+            else:
+                DEBUG_MESSAGE += "something went wrong in the connection to the db"
     st.header("Delete a poem")
     col11, col222 = st.columns(2)
     with col11:
-        zipcode_to_delete_poem = st.text_input("Zipcode", key="zipcode_to_delete_poem")
+        zipcode_to_delete_poem = st.text_input("Zipcode or City", key="zipcode_to_delete_poem")
     with col222:
-        if st.button("Delete Poem"):
-            print("delete poem clicked!")
-
+        if st.button("Delete Poem", key="delete_poem"):
+            DEBUG_MESSAGE = "Try to delete the poem of  "+zipcode_to_delete_poem+" from the database:"+"\n"
+            response = requests.post("http://localhost:5000/delete_poem", json={"zip_or_city": zipcode_to_delete_poem, })
+            if "debug_msg" in response.json():
+                DEBUG_MESSAGE += response.json()["debug_msg"]
+            else:
+                DEBUG_MESSAGE += "something went wrong in the connection to the db"
+    ## Show Database
     st.header("Show the database")
     col11, col222, coll333 = st.columns(3)
     with col11:
         if st.button("Show all addresses"):
-            print("Show all addresses")
+            DEBUG_MESSAGE = "Show all addresses:\n"
+            response = requests.post("http://localhost:5000/show_addresses", json={})
+            if "addresses" in response.json():
+                 if len(response.json()["addresses"])>0:
+                    DEBUG_MESSAGE += response.json()["addresses"]+"\n"
+                 else:
+                    DEBUG_MESSAGE += "Addresses database is empty!"
+            else:
+                DEBUG_MESSAGE += "cannot show addresses the database is empty"
     with col222:
         if st.button("Show all poems"):
-            DEBUG_MESSAGE = "Here are all poems:\n"
+            DEBUG_MESSAGE = "Show all poems:\n"
+            response = requests.post("http://localhost:5000/show_poems", json={})
+            if "poems" in response.json():
+                 if len(response.json()["poems"])>0:
+                    DEBUG_MESSAGE += response.json()["poems"]+"\n"
+                 else:
+                    DEBUG_MESSAGE += "Poems database is empty!"
+            else:
+                DEBUG_MESSAGE += "cannot show poems the database is empty"
+    
+    #Delete all
     with coll333:
         if st.button("Delete whole database"):
             DEBUG_MESSAGE = "Delete whole database:\n"
@@ -79,9 +115,11 @@ def main():
                 DEBUG_MESSAGE += "Cannot delete poems database -> its empty!\n"
             if os.path.exists("addresses"):
                 os.remove("addresses")
-                DEBUG_MESSAGE += "... deleted addresses database+\n"
+                DEBUG_MESSAGE += "... deleted addresses database\n"
             else:
-                DEBUG_MESSAGE += "Cannot delete addresses database -> its empty!\n"     
+                DEBUG_MESSAGE += "Cannot delete addresses database -> its empty!\n"
+
+    # System msgs
     st.text_area("System messages:", value=DEBUG_MESSAGE)
 
 if __name__ == "__main__":

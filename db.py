@@ -1,5 +1,5 @@
 import sqlite3
-
+DEBUG_MESSAGE = ""
 
 def create_connection(database_name):
     """Connects to the specified database."""
@@ -38,6 +38,7 @@ def create_connection(database_name):
                 CREATE TABLE IF NOT EXISTS poem (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     zipcode INTEGER,
+                    city TEXT,
                     poem TEXT
                 )
             ''')
@@ -66,6 +67,58 @@ def insert_address(conn, first_name, last_name, street, house_number, zipcode, c
         conn.commit()
         print("Address inserted successfully.")
 
+def delete_address(conn, first_name, last_name):
+    global DEBUG_MESSAGE
+    """Deletes an address from the database based on first and last name."""
+    cursor = conn.cursor()
+
+    print(first_name, last_name)
+
+    cursor.execute('''
+        DELETE FROM addresses
+        WHERE first_name = ?
+    ''', (first_name, ))
+    conn.commit()
+
+    rows_affected = cursor.rowcount
+    if rows_affected > 0:
+        DEBUG_MESSAGE = first_name+","+ last_name+" deleted successfully."
+    else:
+        DEBUG_MESSAGE = first_name+","+ last_name+" not found. Not deleted!"
+    return DEBUG_MESSAGE
+
+def delete_poem(conn, city_or_zipcode):
+    global DEBUG_MESSAGE
+    print("DB:", city_or_zipcode)
+    cursor = conn.cursor()
+
+    # Try to delete by ZIP code first (assuming ZIP code is an integer)
+    try:
+        zipcode = int(city_or_zipcode)
+        print("is a zipcode")
+        cursor.execute("DELETE FROM poem WHERE zipcode = ?", (zipcode,))
+        conn.commit()
+        DEBUG_MESSAGE = "Poem with ZIP code "+str(zipcode)+" deleted successfully."+"\n"
+        return DEBUG_MESSAGE
+
+    except ValueError:
+        # If the query_term is not an integer, try deleting by city name
+        print("is a city")
+        #cursor.execute("DELETE FROM poem WHERE city = ?", (city_or_zipcode,))
+
+        cursor.execute('''
+            DELETE FROM poem
+            WHERE city = ?
+        ''', (str(city_or_zipcode), ))
+
+        conn.commit()
+        rows_affected = cursor.rowcount
+        if rows_affected > 0:
+            DEBUG_MESSAGE = "Poem with city "+city_or_zipcode+"deleted successfully."+"\n"
+        else:
+            DEBUG_MESSAGE = "No poem found for city "+city_or_zipcode+"\n"
+    return DEBUG_MESSAGE
+
 def check_if_poem_exists(conn, zipcode):
     """Checks if a poem exists for the given zipcode."""
     cursor = conn.cursor()
@@ -83,32 +136,33 @@ def get_poem_by_zipcode(conn, zipcode):
     cursor = conn.cursor()
 
     try:
-        cursor.execute("SELECT poem_text FROM poem WHERE zipcode = ?", (zipcode,))
+        cursor.execute("SELECT poem FROM poem WHERE zipcode = ?", (zipcode,))
         result = cursor.fetchone()
         if result:
             return result[0]  # Return the poem text
         else:
             return None  # Indicate no poem found
     except Exception as e:
+        print(e)
         return None
 
-def insert_poem(conn, zipcode, poem):
+def insert_poem(conn, zipcode, city, poem):
     """Inserts a new poem into the database"""
     cursor = conn.cursor()
     cursor.execute('''
-        INSERT INTO poem (zipcode, poem)
-        VALUES (?, ?)
-    ''', (zipcode, poem))
+        INSERT INTO poem (zipcode, city, poem)
+        VALUES (?, ?, ?)
+    ''', (zipcode, city, poem))
     conn.commit()
 
 def print_table_entries(conn, db_name):
     """Prints all entries from a database"""
+    res = ""
     cursor = conn.cursor()
 
     cursor.execute(f"SELECT * FROM {db_name}")
     rows = cursor.fetchall()
 
-    print("\n"+db_name)
     for row in rows:
-        print(", ".join(str(value) for value in row))
-    print("")
+        res+=", ".join(str(value) for value in row)+"\n"
+    return res
