@@ -15,14 +15,14 @@ DEBUG_MESSAGE = ""
 
 def storeAddress(first_name, last_name, street, house_number, zipcode, city):
     global DEBUG_MESSAGE
-    DEBUG_MESSAGE += "I try to store this address: "+str(request.json["address"])+"\n"
+    DEBUG_MESSAGE = "I try to store this address: "+str(request.json["address"])+"\n"
     conn = db.create_connection("addresses")
     db.insert_address(conn, first_name, last_name, street, house_number, zipcode, city)
     conn.close()
 
 def checkPoem(zipcode, city, language_de):
     global DEBUG_MESSAGE
-    DEBUG_MESSAGE += "I will check if a poem exists for your zipcode:"+str(zipcode)+"\n"
+    DEBUG_MESSAGE = "I will check if a poem exists for your zipcode:"+str(zipcode)+"\n"
     conn = db.create_connection("poem")
     print(zipcode)
     print("poem exits:", db.check_if_poem_exists(conn,zipcode))
@@ -50,6 +50,13 @@ def generate_poem_endpoint():
     storeAddress(first_name, last_name, street, house_number, zipcode, city)
     poem = checkPoem(zipcode, city, language_de)
     return jsonify({'poem': poem, "debug_msg": DEBUG_MESSAGE})
+
+@app.route('/update_location', methods=['POST'])
+def update_location():
+    first_name, last_name, zipcode, street, house_number, city = request.json["address"].split(",")
+    conn = db.create_connection("addresses")
+    DEBUG_MESSAGE = db.update_location(conn, first_name, last_name, street, house_number, zipcode, city)
+    return jsonify({"debug_msg": DEBUG_MESSAGE})
 
 @app.route('/show_addresses', methods=['POST'])
 def show_addresses():

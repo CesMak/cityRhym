@@ -67,6 +67,28 @@ def insert_address(conn, first_name, last_name, street, house_number, zipcode, c
         conn.commit()
         print("Address inserted successfully.")
 
+def update_location(conn, first_name, last_name, new_street, new_house_number, new_zipcode, new_city):
+    global DEBUG_MESSAGE
+    """Updates the location information for a given address."""
+    cursor = conn.cursor()
+
+    # Find the address to update
+    cursor.execute('''
+        UPDATE addresses
+        SET street = ?, house_number = ?, zipcode = ?, city = ?
+        WHERE first_name = ? AND last_name = ?
+    ''', (new_street, new_house_number, new_zipcode, new_city, first_name, last_name))
+
+    conn.commit()
+
+    if cursor.rowcount > 0:
+        DEBUG_MESSAGE = "Location updated successfully."+"\n"
+        print("Location updated successfully.")
+    else:
+        print("No address found for the given name.")
+        DEBUG_MESSAGE = "No address found for the given name."+"\n"
+    return DEBUG_MESSAGE
+
 def delete_address(conn, first_name, last_name):
     global DEBUG_MESSAGE
     """Deletes an address from the database based on first and last name."""

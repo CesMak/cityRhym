@@ -48,9 +48,14 @@ def main():
             poem = poem.replace("<br>","\n")
             poem_input.text_area("Enter or modify a poem here", value=str(poem))
     with col2:
-        if st.button("Save changes"):
-            print("TODO")
-
+        if st.button("Update location settings"):
+            DEBUG_MESSAGE = "Try to update the location settings of "+first_name+","+last_name+"\n"
+            address  = f"{first_name}, {last_name}, {zipcode}, {street}, {house_number}, {city} "
+            response = requests.post("http://localhost:5000/update_location", json={"address": address})
+            if "debug_msg" in response.json():
+                DEBUG_MESSAGE += response.json()["debug_msg"]
+            else:
+                DEBUG_MESSAGE += "Error no debug messages from back-end."     
     ## Delete
     st.header("Delete an address")
     col11, col222, col333 = st.columns(3)

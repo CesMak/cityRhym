@@ -43,9 +43,17 @@ alias start_server='source /home/markus/Desktop/cityRhyme/.env/bin/activate && c
 * click generate poem
 * select a new address for e.g. würzburg 97070
 * select a new name also living in würzburg
-* test delte and show poems / addresses
+* test delete and show poems / addresses
+* test 
 
 # Additionall stuff
+
+## Further TODO's
+* do a live testing
+* generate at least API Docu
+* extend for more rhyms
+* improve UI for editing and deleting addresses e.g. using states to store information
+* May consider using another framework than streamlit
 
 ## Examples Gemini - de
 * Berlin

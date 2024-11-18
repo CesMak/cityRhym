@@ -10,7 +10,7 @@ client = OpenAI(
 )
 
 # API stuff to generate the poem
-def promptLLM(prompt="How many days has a year?", reprompt="", modelName="llama-70b-chat"):
+def promptLLM(prompt="", reprompt="", modelName="llama-70b-chat"):
     # models to choose: llama-70b-chat $1.25  ( p. 1mio Tokens)
     # llama-8b-chat                    $0.5 
     # mixtral-chat                   	$0.83    
