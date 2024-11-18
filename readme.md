@@ -44,7 +44,6 @@ alias start_server='source /home/markus/Desktop/cityRhyme/.env/bin/activate && c
 * select a new address for e.g. würzburg 97070
 * select a new name also living in würzburg
 * test delete and show poems / addresses
-* test 
 
 # Additionall stuff
 
