@@ -1,5 +1,6 @@
 # cityRhym
 [cityRhym](https://github.com/CesMak/cityRhym) is a cross rhym generater for your city!
+It generates a funny poem about the local eating and drinking habits in your city!
 
 # Task definition
 Create a state-of-the-art web service based on standard libraries. It is an address service with built-in lyric functionality. Addresses can be created and
@@ -20,20 +21,33 @@ REPROMPT_DE   = "Das war ein Paarreim (AABB). Bitte gestalte den Reim zu einem K
 ```
 
 # Try it out!
-* Check and insert your LLM API credentials in api.py
+* Check and insert your LLM API credentials as environment_variable
 * setup a virtual python environment
 * install requirements.txt
 * you may use these bash aliases:
 ```bash
+export OPENAI_API_KEY="" 
 alias cd_cr='source /home/markus/Desktop/cityRhyme/.env/bin/activate'
 alias start_app='source /home/markus/Desktop/cityRhyme/.env/bin/activate && cd /home/markus/Desktop/cityRhyme/ && streamlit run ./app.py'
 alias start_server='source /home/markus/Desktop/cityRhyme/.env/bin/activate && cd /home/markus/Desktop/cityRhyme/ && python3 backend.py'
+
 ```
 * in one terminal execute start_app
 * in another one execute start_server
-* enter your address and click generate_poem!
+* see the walkthrough for more instructions
 
-# Examples Gemini - de
+# App Walkthrough
+* click delete whole database
+* click Deutsch
+* enter your address - better choose a big city!
+* click generate poem
+* select a new address for e.g. würzburg 97070
+* select a new name also living in würzburg
+* test delte and show poems / addresses
+
+# Additionall stuff
+
+## Examples Gemini - de
 * Berlin
     ```
     In Berlin, da gibt's 'nen Dönerladen weit und breit,
@@ -58,7 +72,7 @@ alias start_server='source /home/markus/Desktop/cityRhyme/.env/bin/activate && c
     Mit einem Maß Bier, das geht immer so,
     Mit Kartoffelsalat, das ist ein Fest.
     ``` 
-# Examples Mistral
+## Examples Mistral
 * https://anakin.ai/apps/chat-with-mistral-7-b-instruct-online-chatbot-18038
 In the heart of Europe, where the Spree doth flow, Lies Berlin, where the bratwurst aglow,
 With a quirky charm, and a curious vibe,
@@ -85,7 +99,7 @@ In Berlin, where the laughter never dies,
 A place where the fun, and the memories rise.
     Can you create a funny poem in cross rhyme about the city of Berlin and the local eating and drinking habits?
 
-# Timeline
+## Timeline
 * Sa 16 Nov 8:30 - 10:30 for architecture and db stuff
 * So 1h use LLM for generating the poems
 * Mo fix some db bugs

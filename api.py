@@ -1,7 +1,11 @@
 from openai import OpenAI
+import os
+api_key = os.environ.get('OPENAI_API_KEY')
+
+print("API KEY::::", api_key)
 
 client = OpenAI(
-  api_key="rwJgsDpEpOFVhn6SdYm0OuInYRtZmSIB",
+  api_key=api_key,
   base_url="https://api.lemonfox.ai/v1",
 )
 

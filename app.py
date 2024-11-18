@@ -121,6 +121,6 @@ def main():
 
     # System msgs
     st.text_area("System messages:", value=DEBUG_MESSAGE)
-
+    DEBUG_MESSAGE = ""
 if __name__ == "__main__":
     main()
