@@ -1,6 +1,7 @@
 # cityRhym
 [cityRhym](https://github.com/CesMak/cityRhym) is a cross rhym generater for your city!
 It generates a funny poem about the local eating and drinking habits in your city!
+![alt text](doc/ui.png)
 
 # Task definition
 Create a state-of-the-art web service based on standard libraries. It is an address service with built-in lyric functionality. Addresses can be created and
@@ -19,6 +20,9 @@ REPORMPT_EN   = "This was a couplet rhyme. Please rearrange the words such that 
 PROMPT_DE     = "Erstelle ein lustiges Gedicht im Kreuzreim über die Essens und Triinkgewohnheiten in"
 REPROMPT_DE   = "Das war ein Paarreim (AABB). Bitte gestalte den Reim zu einem Kreuzreim (ABAB) um. Gib nur den Reim  selbst zurück!"
 ```
+* the above reprompting approach worked well for creating a cross rhyme
+* other ways would be view-shot prompting showing a positive and negative example etc. 
+* or you can also use a very large LLM that may know what a cross rhyme is.
 
 # Try it out!
 * Check and insert your LLM API credentials as environment_variable
@@ -45,8 +49,62 @@ alias start_server='source /home/markus/Desktop/cityRhyme/.env/bin/activate && c
 * select a new name also living in würzburg
 * test delete and show poems / addresses
 
-# Additionall stuff
+# Results
+```
+In Berlin isst man gern sein Bier
+Currywurst, ein Klassiker, so fein
+Mit Pommes frites, das ist das Tier
+Ein Berliner Trinkgewohnheit, so rein
+```
 
+```
+In Würzburg's streets, a sight to see,
+Frankenwein flows free, a drink divine.
+People eat Bratwurst with glee,
+And Weisswurst too, a taste so fine.
+
+The locals drink with joyful sound,
+Brezeln crunch, a snack so neat.
+Their favorite beer all around,
+And Lebkuchen sweet, a treat to eat.
+
+In Würzburg's cafes, a cozy place,
+Kaffee mit Kuchen, a perfect pair.
+People sip with a happy face,
+And Schneeballen sweet, beyond compare.
+```
+``` 
+In Köln, wo die Domspatzen singen,
+Bierchen trinken, das ist ihre Art.
+Frühstückt man Mettbrötchen, das ist ein Ding,
+Kölsch und Sauerbraten, ein perfektes Paar.
+``` 
+
+``` 
+In Munich's streets, a sight to see,
+Beer flows free, a drinker's glee.
+Weisswurst for breakfast, a curious fate,
+Eaten with sweet mustard, a tasty state.
+ 
+Pretzels are crunchy, a perfect pair,
+With a cold Weissbier, beyond compare.
+ Schnitzel is breaded, a crispy delight,
+Served with a side, of fries so bright.
+ 
+Apfelstrudel, a pastry so fine,
+With a cup of coffee, a perfect combine.
+Prost! they say, as they clink their glass,
+In Munich's tradition, that will forever last.
+``` 
+
+```
+In Peking, wo die Mauern hoch
+Bier und Tee, ein gutes Paar
+Essen Jiaozi, scharf und trocken noch
+Morgens Frühstück, Wonton klar
+``` 
+
+# Additionall stuff
 ## Further TODO's
 * do a live testing
 * generate at least API Docu
